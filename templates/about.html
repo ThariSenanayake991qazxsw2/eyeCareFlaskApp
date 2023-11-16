@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Eye Diseases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container3">
+        <nav>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('predict') }}">Prediction</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text-box3">
+            <div class="box">
+                <h2>Diabetic Retinopathy</h2>
+                <p>Diabetic retinopathy is a complication of diabetes that affects the eyes. It's caused by damage to the blood vessels of the light-sensitive tissue at the back of the eye (retina). If left untreated, it can lead to blindness.</p>
+            </div>
+            <div class="box">
+                <h2>Glaucoma</h2>
+                <p>Glaucoma is a group of eye conditions that damage the optic nerve, which is vital for good vision. It's often associated with high pressure in the eye and can result in gradual vision loss if not treated early.</p>
+            </div>
+            <div class="box">
+                <h2>Cataract</h2>
+                <p>Cataracts are cloudy areas in the lens of the eye that can cause blurred or hazy vision. It occurs when proteins in the lens form clumps, making it difficult for light to pass through the lens.</p>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

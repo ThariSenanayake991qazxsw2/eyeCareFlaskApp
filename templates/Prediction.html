@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CNN Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container2">
+        <nav>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('predict') }}">Prediction</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="text-box2">
+            <h1>Eye Disease Detection</h1>
+            <form method="post" enctype="multipart/form-data" action="/predict" id="upload-form">
+                <input type="file" name="file" id="upload" accept="image/*" onchange="displayImage(event)">
+                <input type="submit" class="btn2" value="Predict" onclick="storeImage()">
+                <input type="submit" class="btn3" value="Clear" onclick="clearImage()"><!-- Clear button -->
+            </form>
+
+            <div class="pred">
+                <div class="image-container">
+                    <img id="uploaded-image" src="#" alt="Uploaded Image">
+                </div>
+                {% if prediction_text %}
+                    <p>Prediction: {{ prediction_text }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        var storedImageURL = null;
+
+        function displayImage(event) {
+            var image = document.getElementById('uploaded-image');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            storedImageURL = image.src; // Store the image URL
+        }
+
+        function storeImage() {
+            // Store the image URL for later use
+            if (storedImageURL !== null) {
+                localStorage.setItem('storedImage', storedImageURL);
+            }
+            document.getElementById('upload-form').submit(); // Submit the form for prediction
+        }
+
+        function clearImage() {
+            var image = document.getElementById('uploaded-image');
+            image.src = '#'; // Clear the image
+            storedImageURL = null; // Reset stored image URL
+
+            // Clear the prediction text
+            var predictionText = document.querySelector('.pred p');
+            if (predictionText) {
+                predictionText.parentNode.removeChild(predictionText);
+            }
+
+            // Clear the stored image URL from localStorage
+            localStorage.removeItem('storedImage');
+        }
+
+        // On page load, check if there's a stored image to display
+        window.onload = function() {
+            var storedImage = localStorage.getItem('storedImage');
+            if (storedImage !== null) {
+                var image = document.getElementById('uploaded-image');
+                image.src = storedImage;
+                storedImageURL = storedImage; // Set stored image URL
+            }
+        }
+    </script>
+</body>
+</html>

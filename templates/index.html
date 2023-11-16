@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CNN Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('predict') }}">Prediction</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <h1>Welcome to Eye Care</h1><br>
+            <p>Revolutionize eye care with our AI-powered platform. Predict and prevent eye diseases accurately. <br><br>Access personalized assessments for proactive eye health.,<br><br><br> Your vision, our priority.</p>
+            <a href="{{ url_for('predict') }}" class="btn">Visit Here To See The Prediction</a>
+        </div>
+    </div>
+</body>
+</html>
